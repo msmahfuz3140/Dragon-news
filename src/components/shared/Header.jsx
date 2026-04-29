@@ -11,7 +11,7 @@ const Header = () => {
   });
 
   return (
-    <header className="relative overflow-hidden border-b border-gray-200 bg-white">
+    <header className="relative overflow-hidden bg-white">
 
       {/* Background Glow */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-white pointer-events-none"></div>
