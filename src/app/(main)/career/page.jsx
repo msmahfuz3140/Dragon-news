@@ -30,7 +30,7 @@ const CareerPage = () => {
 
       <div className="max-w-6xl mx-auto">
 
-        {/* Hero Section */}
+       
         <div className="text-center mb-14">
 
           <h1 className="text-3xl md:text-5xl font-bold text-gray-900">
@@ -47,7 +47,7 @@ const CareerPage = () => {
 
         </div>
 
-        {/* Jobs */}
+      
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
           {jobs.map((job) => (
@@ -56,17 +56,17 @@ const CareerPage = () => {
               className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300"
             >
 
-              {/* Title */}
+             
               <h2 className="text-xl font-semibold text-gray-800">
                 {job.title}
               </h2>
 
-              {/* Location */}
+            
               <p className="text-gray-500 mt-2 text-sm">
                 📍 {job.location}
               </p>
 
-              {/* Badges */}
+           
               <div className="flex flex-wrap gap-2 mt-4">
 
                 <span className="text-xs bg-gray-100 px-3 py-1 rounded-full text-gray-600">
@@ -79,7 +79,7 @@ const CareerPage = () => {
 
               </div>
 
-              {/* Button */}
+              
               <button className="mt-6 w-full bg-black text-white py-2.5 rounded-xl font-medium hover:bg-gray-800 transition">
                 Apply Now
               </button>
@@ -89,7 +89,7 @@ const CareerPage = () => {
 
         </div>
 
-        {/* Footer CTA */}
+
         <div className="text-center mt-14">
           <p className="text-gray-600 text-sm md:text-base">
             Dont see a role that fits? We are always open to talent.

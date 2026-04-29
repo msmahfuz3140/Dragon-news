@@ -6,14 +6,14 @@ const AboutPage = () => {
 
       <div className="max-w-5xl mx-auto bg-white rounded-3xl shadow-lg p-6 md:p-12">
 
-        {/* Header */}
+       
         <h1 className="text-3xl md:text-5xl font-bold text-gray-900 text-center">
           About Our News Platform
         </h1>
 
         <div className="w-24 h-[3px] bg-red-500 mx-auto my-6 rounded-full"></div>
 
-        {/* Intro */}
+       
         <p className="text-gray-600 text-sm md:text-lg leading-relaxed text-center">
           We are a modern digital news platform committed to delivering
           <span className="font-semibold text-gray-800"> fast, accurate, and unbiased journalism </span>
@@ -27,7 +27,7 @@ const AboutPage = () => {
           Our editorial team works 24/7 to ensure you never miss what matters.
         </p>
 
-        {/* Mission & Vision */}
+      
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
 
           <div className="p-6 border rounded-2xl bg-gray-50">
@@ -51,8 +51,7 @@ const AboutPage = () => {
           </div>
 
         </div>
-
-        {/* Stats */}
+     
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 text-center">
 
           <div className="p-4 border rounded-xl bg-white shadow-sm">
@@ -77,7 +76,7 @@ const AboutPage = () => {
 
         </div>
 
-        {/* Core Values */}
+     
         <div className="mt-14 text-center">
           <h2 className="text-2xl font-semibold text-gray-900">
             Our Core Values
