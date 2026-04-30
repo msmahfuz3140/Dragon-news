@@ -1,6 +1,7 @@
 "use client";
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 import { FaRegBookmark, FaShareAlt, FaStar, FaEye } from 'react-icons/fa';
 
@@ -47,12 +48,14 @@ const NewsCard = ({ news }) => {
 
                 {/* Thumbnail */}
                 <div className="relative w-full h-[300px] mb-4">
-                    <Image
-                        src={news.thumbnail_url}
-                        alt="News Thumbnail"
-                        fill
-                        className="object-cover rounded-sm"
-                    />
+                    <Link href={`/news/${news._id}`}>
+                        <Image
+                            src={news.thumbnail_url}
+                            alt="News Thumbnail"
+                            fill
+                            className="object-cover rounded-sm"
+                        />
+                    </Link>
                 </div>
 
                 {/* 🔥 Line Clamp Description */}

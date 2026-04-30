@@ -1,5 +1,6 @@
 import LeftSidebar from '@/components/homepage/news/LeftSidebar';
 import NewsCard from '@/components/homepage/news/NewsCard';
+import NoNewsCard from '@/components/homepage/news/NoNewsCard';
 import RightSidebar from '@/components/homepage/news/RightSidebar';
 import { getCategories, getNewsByCategoryId } from '@/lib/data';
 
@@ -30,7 +31,7 @@ const NewsCategoryDetailsPage = async ({ params }) => {
                             <NewsCard key={article._id} news={article} />
                         ))
                     ) : (
-                        <p className="text-gray-600">No news available in this category.</p>
+                        <NoNewsCard />
                     )}
                 </div>
 
