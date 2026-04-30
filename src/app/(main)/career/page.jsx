@@ -1,4 +1,7 @@
-import React from "react";
+export const metadata = {
+  title: "Dragon News - Career",
+  description: "Join our team and build your career with us",
+};
 
 const CareerPage = () => {
   const jobs = [

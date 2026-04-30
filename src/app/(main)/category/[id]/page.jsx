@@ -4,7 +4,10 @@ import NoNewsCard from '@/components/homepage/news/NoNewsCard';
 import RightSidebar from '@/components/homepage/news/RightSidebar';
 import { getCategories, getNewsByCategoryId } from '@/lib/data';
 
-
+export const metadata = {
+  title: "Dragon News - Category",
+  description: "Best News portal in Bangladesh",
+};
 
 const NewsCategoryDetailsPage = async ({ params }) => {
 

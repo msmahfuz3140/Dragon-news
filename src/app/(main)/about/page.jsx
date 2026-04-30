@@ -1,4 +1,7 @@
-import React from "react";
+export const metadata = {
+  title: "Dragon News-about",
+  description: "About our News Platform",
+};
 
 const AboutPage = () => {
   return (
