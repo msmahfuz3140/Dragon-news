@@ -38,11 +38,10 @@ const Navbar = () => {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative transition ${
-                    isActive
+                  className={`relative transition ${isActive
                       ? "text-black font-semibold"
                       : "text-gray-600 hover:text-black"
-                  }`}
+                    }`}
                 >
                   {link.label}
 
@@ -67,9 +66,11 @@ const Navbar = () => {
               className="rounded-full object-cover"
             />
 
-            <button className="hidden sm:block bg-gray-900 text-white px-4 py-2 rounded-full text-sm hover:bg-gray-800 transition">
-              Login
-            </button>
+            <Link href="/login">
+              <button className="hidden sm:block bg-gray-900 text-white px-4 py-2 rounded-full text-sm hover:bg-gray-800 transition">
+                Login
+              </button>
+            </Link>
 
             {/* Mobile Menu Button */}
             <button
@@ -95,9 +96,8 @@ const Navbar = () => {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className={`transition ${
-                    isActive ? "text-black font-semibold" : "text-gray-600"
-                  }`}
+                  className={`transition ${isActive ? "text-black font-semibold" : "text-gray-600"
+                    }`}
                 >
                   {link.label}
                 </Link>
