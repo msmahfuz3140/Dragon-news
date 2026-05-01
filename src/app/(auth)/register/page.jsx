@@ -4,6 +4,11 @@ import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { User, Mail, Lock, Image, Check } from "lucide-react";
+import { authClient } from "@/lib/auth-client";
+import { redirect } from "next/dist/server/api-utils";
+
+import { useRouter } from "next/navigation";
+
 
 const passwordRules = {
     length: (v) => v.length >= 8,
@@ -26,8 +31,32 @@ const RegisterPage = () => {
     const password = watch("password", "");
     const confirmPassword = watch("confirmPassword", "");
 
-    const handleRegister = (data) => {
-        console.log("Register Data:", data);
+    const router = useRouter();
+
+    const handleRegister = async (formData) => {
+        // console.log("Register Data:", formData);
+        const { name, email, password, photo } = formData;
+
+        
+
+        const { data, error } = await authClient.signUp.email({
+            name: name, // required
+            email: email, // required
+            password: password, // required
+            image: photo,
+            callbackURL: "/",
+        });
+        console.log(data, error);
+
+        if (error) {
+            alert(error?.message);
+            return;
+        }
+
+        if (data) {
+            alert("Sign up successful!");
+            router.push("/login");
+        }
     };
 
     return (

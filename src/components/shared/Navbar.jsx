@@ -5,8 +5,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import userIcon from "@/assets/user.png";
+import { authClient } from "@/lib/auth-client";
 
 const Navbar = () => {
+
+  const { data: session, isPending } = authClient.useSession();
+  const user = session?.user;
+
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
@@ -15,6 +20,11 @@ const Navbar = () => {
     { href: "/about", label: "About" },
     { href: "/career", label: "Career" },
   ];
+
+  // ✅ Logout Function
+  const handleLogout = async () => {
+    await authClient.signOut();
+  };
 
   return (
     <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
@@ -45,7 +55,6 @@ const Navbar = () => {
                 >
                   {link.label}
 
-                  {/* Active underline */}
                   {isActive && (
                     <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-black rounded-full"></span>
                   )}
@@ -55,22 +64,40 @@ const Navbar = () => {
 
           </div>
 
-          {/* Right Side */}
+          {/* RIGHT SIDE */}
           <div className="flex items-center gap-3">
 
-            <Image
-              src={userIcon}
-              alt="User"
-              width={36}
-              height={36}
-              className="rounded-full object-cover"
-            />
+            {user ? (
+              <>
+                {/* User Name */}
+                <h2 className="hidden md:block font-semibold">
+                  {user.name}
+                </h2>
 
-            <Link href="/login">
-              <button className="hidden sm:block bg-gray-900 text-white px-4 py-2 rounded-full text-sm hover:bg-gray-800 transition">
-                Login
-              </button>
-            </Link>
+                {/* Avatar */}
+                <Image
+                  src={userIcon}
+                  alt="User"
+                  width={36}
+                  height={36}
+                  className="rounded-full object-cover"
+                />
+
+                {/* Logout Button */}
+                <button
+                  onClick={handleLogout}
+                  className="bg-gray-900 text-white px-4 py-2 rounded-full text-sm hover:bg-gray-800 transition"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <Link href="/login">
+                <button className="bg-gray-900 text-white px-4 py-2 rounded-full text-sm hover:bg-gray-800 transition">
+                  Login
+                </button>
+              </Link>
+            )}
 
             {/* Mobile Menu Button */}
             <button
@@ -81,12 +108,11 @@ const Navbar = () => {
             </button>
 
           </div>
-
         </div>
 
         {/* Mobile Menu */}
         {open && (
-          <div className="md:hidden flex flex-col gap-4 py-4 border-t text-gray-700 font-medium">
+          <div className="md:hidden flex flex-col gap-4 py-4 border-t font-medium">
 
             {links.map((link) => {
               const isActive = pathname === link.href;
@@ -96,18 +122,29 @@ const Navbar = () => {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className={`transition ${isActive ? "text-black font-semibold" : "text-gray-600"
-                    }`}
+                  className={isActive ? "font-semibold" : ""}
                 >
                   {link.label}
                 </Link>
               );
             })}
 
-            <button className="bg-gray-900 text-white px-4 py-2 rounded-full w-fit">
-              Login
-            </button>
-
+            {isPending ? (
+              <p>Loading...</p>
+            ) : user ? (
+              <button
+                onClick={handleLogout}
+                className="bg-gray-900 text-white px-4 py-2 rounded-full w-fit"
+              >
+                Logout
+              </button>
+            ) : (
+              <Link href="/login">
+                <button className="bg-gray-900 text-white px-4 py-2 rounded-full w-fit">
+                  Login
+                </button>
+              </Link>
+            )}
           </div>
         )}
 

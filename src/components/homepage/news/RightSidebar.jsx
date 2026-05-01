@@ -1,7 +1,23 @@
-import React from "react";
+"use client"
+
+import { authClient } from "@/lib/auth-client";
+import Link from "next/link";
 import { FaGoogle, FaGithub, FaLinkedinIn, FaTwitter, FaFacebookF } from "react-icons/fa";
 
 const RightSidebar = () => {
+    const handleGoogleSignIn = async () => {
+        const data = await authClient.signIn.social({
+            provider: "google",
+        });
+        console.log(data)
+    };
+    const handleGithubSignIn = async () => {
+        const data = await authClient.signIn.social({
+            provider: "github",
+        });
+        console.log(data)
+    };
+
     return (
         <div className="w-full">
 
@@ -13,7 +29,10 @@ const RightSidebar = () => {
                 </h2>
 
                 {/* Google Login */}
-                <button className="w-full flex items-center justify-center gap-3 border rounded-xl py-2.5 mb-3 hover:bg-gray-100 transition">
+                <button 
+                    className="w-full flex items-center justify-center gap-3 border rounded-xl py-2.5 mb-3 hover:bg-gray-100 transition"
+                    onClick={handleGoogleSignIn}
+                >
                     <FaGoogle className="text-red-500 text-lg" />
                     <span className="text-gray-700 font-medium">
                         Login with Google
@@ -21,7 +40,10 @@ const RightSidebar = () => {
                 </button>
 
                 {/* GitHub Login */}
-                <button className="w-full flex items-center justify-center gap-3 border rounded-xl py-2.5 hover:bg-gray-100 transition">
+                <button 
+                    className="w-full flex items-center justify-center gap-3 border rounded-xl py-2.5 mb-3 hover:bg-gray-100 transition"
+                    onClick={handleGithubSignIn}
+                >
                     <FaGithub className="text-gray-800 text-lg" />
                     <span className="text-gray-700 font-medium">
                         Login with GitHub
@@ -39,31 +61,31 @@ const RightSidebar = () => {
                     </h2>
 
                     {/* Facebook */}
-                    <a
+                    <Link
                         href="#"
                         className="flex items-center gap-3 border-b border-gray-400 rounded-xl px-4 py-2 mb-3 hover:bg-blue-50 transition"
                     >
                         <FaFacebookF className="text-blue-600" />
                         <span className="text-gray-700 font-medium">Facebook</span>
-                    </a>
+                    </Link>
 
                     {/* Twitter */}
-                    <a
+                    <Link
                         href="#"
                         className="flex items-center gap-3 border-b border-gray-400 rounded-xl px-4 py-2 mb-3 hover:bg-sky-50 transition"
                     >
                         <FaTwitter className="text-sky-500" />
                         <span className="text-gray-700 font-medium">Twitter</span>
-                    </a>
+                    </Link>
 
                     {/* LinkedIn */}
-                    <a
-                        href="#"
+                    <Link
+                        href="https://www.linkedin.com/in/msmahfuz3140"
                         className="flex items-center gap-3 border-b border-gray-400 rounded-xl px-4 py-2 hover:bg-blue-50 transition"
                     >
                         <FaLinkedinIn className="text-blue-700" />
                         <span className="text-gray-700 font-medium">LinkedIn</span>
-                    </a>
+                    </Link>
 
                 </div>
 

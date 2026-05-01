@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { authClient } from "@/lib/auth-client";
 
 // 🔥 Validation Schema
 const loginSchema = z.object({
@@ -26,8 +27,15 @@ const LoginPage = () => {
         resolver: zodResolver(loginSchema),
     });
 
-    const handleLoginFun = (data) => {
-        console.log("Login Data:", data);
+    const handleLoginFun = async (formData) => {
+        console.log("Login Data:", formData);
+        const { data, error } = await authClient.signIn.email({
+            email: formData.email, // required
+            password: formData.password, // required
+            rememberMe: true,
+            callbackURL: "/",
+        });
+        console.log(data, error);
     };
 
     return (
