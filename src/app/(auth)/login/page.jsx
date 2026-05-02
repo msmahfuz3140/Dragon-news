@@ -49,7 +49,7 @@ const LoginPage = () => {
 
         if (data) {
             alert("Login successful!");
-            router.push("/login");
+            
         }
     };
 
