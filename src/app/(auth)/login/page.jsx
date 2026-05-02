@@ -1,7 +1,7 @@
 "use client";
 
 import { FcGoogle } from "react-icons/fc";
-import { Eye, EyeOff, Lock, Mail } from "lucide-react";
+import { Lock, Mail } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -17,6 +17,12 @@ const loginSchema = z.object({
 });
 
 const LoginPage = () => {
+    const handleGoogleSignIn = async () => {
+        const data = await authClient.signIn.social({
+            provider: "google",
+        });
+        console.log(data)
+    };
     const [showPassword, setShowPassword] = useState(false);
 
     const {
@@ -145,7 +151,7 @@ const LoginPage = () => {
                 </div>
 
                 {/* GOOGLE LOGIN */}
-                <button className="w-full flex items-center justify-center gap-3 border border-gray-300 py-3 rounded-lg font-medium hover:bg-gray-50 transition">
+                <button onClick={handleGoogleSignIn} className="w-full flex items-center justify-center gap-3 border border-gray-300 py-3 rounded-lg font-medium hover:bg-gray-50 transition">
                     <FcGoogle size={22} />
                     Continue with Google
                 </button>
